@@ -104,6 +104,13 @@ natif de Netlify, inclus gratuitement. Aucune base de données externe requise.
 **Mot de passe admin refusé**
 → Vérifiez la variable `ADMIN_PASSWORD` dans Netlify → Environment variables
 
+**Erreur « Deploy directory 'bethel7-netlify/public' does not exist »**
+→ Les fichiers du site se trouvent à la racine du dépôt, pas dans un dossier
+`bethel7-netlify/public`. Dans Netlify → **Build & Deploy → Build Settings**,
+laissez **Base directory** et **Build command** vides, puis définissez
+**Publish directory** sur `.`. Le fichier `netlify.toml` à la racine contient
+également ce réglage et doit rester inclus dans le dépôt.
+
 ---
 
 *Bethel 7 — Le Réveil des Sentinelles · Lighans Jordy Great Ministries*

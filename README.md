@@ -7,16 +7,10 @@
 
 ```
 bethel7/
-├── netlify.toml              ← Configuration Netlify (ne pas modifier)
-├── package.json              ← Dépendances
-├── .gitignore
-├── netlify/
-│   └── functions/
-│       └── api.js            ← API serverless (base de données incluse)
-└── public/
-    ├── index.html            ← Plateforme d'inscription (page principale)
-    ├── admin.html            ← Tableau de bord admin
-    └── flyer.webp            ← Affiche de l'événement
+├── netlify.toml              ← Configuration Netlify
+├── index.html                ← Plateforme d'inscription (page principale)
+├── admin.html                ← Tableau de bord admin
+└── flyer.webp                ← Affiche de l'événement
 ```
 
 ---
@@ -34,7 +28,6 @@ bethel7/
 3. Laissez tout par défaut → cliquez **Create repository**
 4. Sur la page du dépôt → cliquez **uploading an existing file**
 5. **Glissez-déposez TOUS les fichiers ET dossiers** de ce projet
-   *(y compris les dossiers `netlify/` et `public/` avec leur contenu)*
 6. Cliquez **Commit changes**
 
 ### ÉTAPE 3 — Créer un compte Netlify (gratuit)
@@ -49,7 +42,7 @@ bethel7/
 4. Vérifiez les paramètres :
    - **Base directory** : laisser vide
    - **Build command** : laisser vide
-   - **Publish directory** : `public`
+   - **Publish directory** : `.`
 5. Cliquez **Deploy site**
 6. Attendez 1–2 minutes → votre site est en ligne ! 🎉
 

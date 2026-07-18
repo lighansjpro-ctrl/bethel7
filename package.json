@@ -1,0 +1,8 @@
+{
+  "name": "bethel7-inscription",
+  "version": "1.0.0",
+  "description": "Bethel 7 — Le Réveil des Sentinelles",
+  "dependencies": {
+    "@netlify/blobs": "^7.3.0"
+  }
+}

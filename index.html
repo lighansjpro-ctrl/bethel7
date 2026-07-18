@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<meta name="description" content="Bethel 7 — Le Réveil des Sentinelles. Événement spirituel chrétien 24h non-stop. 6–7 Novembre 2026."/>
+<meta property="og:title" content="Bethel 7 — Le Réveil des Sentinelles"/>
+<meta property="og:description" content="Inscrivez-vous à l'événement spirituel chrétien 24h non-stop — 6–7 Novembre 2026"/>
+<meta property="og:image" content="/flyer.webp"/>
+<title>Bethel 7 — Le Réveil des Sentinelles · Inscription</title>
+<style>
+/* ── RESET & BASE ─────────────────────────────────── */
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Helvetica Neue',Arial,sans-serif;background:#0A0618;color:#1C1C2E;overflow-x:hidden}
+
+/* ── HERO ─────────────────────────────────────────── */
+#hero{position:relative;min-height:100svh;display:flex;flex-direction:column;
+  justify-content:flex-end;overflow:hidden}
+#hero-bg{position:absolute;inset:0;
+  background:url('/flyer.webp') center top/cover no-repeat;
+  filter:brightness(.72);transition:filter 1s}
+#hero-overlay{position:absolute;inset:0;
+  background:linear-gradient(to bottom,
+    rgba(10,6,24,0) 15%,
+    rgba(10,6,24,.5) 50%,
+    rgba(10,6,24,.97) 100%)}
+#hero-content{position:relative;z-index:2;text-align:center;padding:0 20px 56px}
+
+.hero-label{color:#E879F9;font-size:11px;font-weight:800;letter-spacing:.28em;
+  text-transform:uppercase;margin-bottom:8px;opacity:.9}
+.hero-title{font-family:Georgia,serif;font-size:clamp(60px,14vw,112px);
+  color:#fff;line-height:1;letter-spacing:-.02em;margin-bottom:4px;
+  text-shadow:0 4px 32px rgba(232,25,140,.3)}
+.hero-edition{color:#E879F9;font-size:13px;font-weight:700;letter-spacing:.18em;
+  margin-bottom:6px;text-transform:uppercase}
+.hero-theme{font-family:Georgia,serif;font-size:clamp(20px,5vw,40px);color:#fff;
+  font-weight:800;text-transform:uppercase;letter-spacing:.04em;margin-bottom:24px;
+  text-shadow:0 2px 16px rgba(0,0,0,.5)}
+.hero-date{display:inline-flex;gap:16px;flex-wrap:wrap;justify-content:center;
+  background:rgba(232,25,140,.15);border:1px solid rgba(232,25,140,.4);
+  border-radius:50px;padding:10px 28px;margin-bottom:40px}
+.hero-date b{color:#F9A8D4;font-size:14px;font-weight:700}
+.hero-date small{color:#E879F9;font-size:14px}
+.hero-date span{color:rgba(255,255,255,.25)}
+.hero-btns{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+.hbtn{padding:13px 24px;border-radius:12px;border:none;cursor:pointer;color:#fff;
+  font-weight:800;font-size:14px;font-family:inherit;letter-spacing:.04em;
+  transition:transform .2s,box-shadow .2s}
+.hbtn:hover{transform:translateY(-3px)}
+
+/* ── STATS ───────────────────────────────────────── */
+#stats-bar{background:#150D2E;padding:20px;display:flex;justify-content:center;
+  flex-wrap:wrap;border-bottom:1px solid rgba(232,25,140,.1)}
+.stat-item{text-align:center;padding:8px 28px;border-left:1px solid rgba(232,25,140,.12)}
+.stat-item:first-child{border-left:none}
+.stat-num{font-family:Georgia,serif;font-size:30px;font-weight:800}
+.stat-lbl{font-size:11px;color:rgba(255,255,255,.4);letter-spacing:.06em;margin-top:3px;text-transform:uppercase}
+
+/* ── REGISTER SECTION ────────────────────────────── */
+#register{background:linear-gradient(180deg,#F0EBF8 0%,#EAE3F5 100%);
+  padding:52px 20px 80px}
+.reg-inner{max-width:700px;margin:0 auto}
+.reg-header{text-align:center;margin-bottom:36px}
+.reg-header small{color:#999;font-size:11px;font-weight:800;letter-spacing:.18em;
+  text-transform:uppercase;display:block;margin-bottom:8px}
+.reg-header h2{font-family:Georgia,serif;font-size:28px;color:#1C1C2E}
+
+/* ── TABS ────────────────────────────────────────── */
+#tab-bar{background:#fff;border-radius:16px;padding:6px;display:flex;gap:4px;
+  margin-bottom:28px;box-shadow:0 2px 14px rgba(0,0,0,.07)}
+.tbtn{flex:1;padding:12px 6px;border:none;border-radius:12px;cursor:pointer;
+  font-weight:700;font-size:13px;font-family:inherit;transition:all .2s;
+  background:transparent;color:#999;line-height:1.35;text-align:center}
+.tbtn .ticon{display:block;font-size:17px;margin-bottom:3px}
+.tbtn .tbadge{display:none;font-size:10px;font-weight:400;opacity:.8;margin-top:2px}
+.tbtn.active .tbadge{display:block}
+.tbtn.active{color:#fff}
+.tbtn:not(.active):hover{background:#F3F0FF;color:#555}
+
+/* ── FORM PANELS ─────────────────────────────────── */
+.fpanel{display:none}
+.fpanel.active{display:block}
+.fcard{background:#fff;border-radius:20px;padding:32px 28px;
+  box-shadow:0 8px 48px rgba(0,0,0,.08)}
+.fhead{display:flex;align-items:center;gap:12px;margin-bottom:26px}
+.ficon{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;
+  justify-content:center;font-size:22px;flex-shrink:0}
+.fhead h3{font-family:Georgia,serif;font-size:20px;margin-bottom:3px}
+.fhead p{font-size:13px;color:#888}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:0 18px}
+.fld{margin-bottom:20px}
+.fld label{display:block;font-weight:700;font-size:12px;color:#555;
+  text-transform:uppercase;letter-spacing:.07em;margin-bottom:6px}
+.fld .hint{font-size:12px;color:#999;margin-bottom:5px;margin-top:-3px;line-height:1.5}
+.req{margin-left:2px}
+.inp,.sel,.txa{width:100%;padding:12px 15px;border:2px solid #EAE4F5;
+  border-radius:10px;font-size:15px;font-family:inherit;outline:none;
+  background:#FDFBFF;color:#1C1C2E;transition:border-color .2s}
+.sel{cursor:pointer}
+.txa{resize:vertical;line-height:1.7}
+.notice{border-radius:10px;padding:14px 16px;font-size:13px;
+  line-height:1.7;margin-bottom:22px}
+
+/* Domaines checkboxes */
+.dom-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:4px}
+.dbtn{padding:10px 12px;border-radius:8px;border:2px solid #EDE0F8;background:#F9F5FF;
+  color:#555;font-size:13px;cursor:pointer;text-align:left;font-family:inherit;
+  transition:all .15s;line-height:1.35;width:100%}
+.dbtn.sel{color:#fff;border-color:transparent}
+
+/* Toggle anonyme */
+.tog-row{display:flex;align-items:center;gap:12px;padding:13px 16px;border-radius:10px;
+  cursor:pointer;margin-bottom:18px;user-select:none}
+.tog-track{width:44px;height:24px;border-radius:12px;background:#ddd;position:relative;
+  flex-shrink:0;transition:background .2s}
+.tog-track.on{background:var(--ac,#9B1D6E)}
+.tog-thumb{position:absolute;top:3px;left:3px;width:18px;height:18px;border-radius:50%;
+  background:#fff;transition:left .2s;box-shadow:0 1px 4px rgba(0,0,0,.2)}
+.tog-track.on .tog-thumb{left:23px}
+.tog-txt p{margin:0;font-weight:700;font-size:14px;color:#333}
+.tog-txt small{font-size:12px;color:#888}
+
+/* Checkbox accord */
+.chk-row{display:flex;align-items:flex-start;gap:12px;padding:13px 16px;
+  border-radius:10px;cursor:pointer;margin-bottom:20px;user-select:none}
+.chk-box{width:20px;height:20px;border-radius:6px;border:2px solid #ddd;flex-shrink:0;
+  margin-top:1px;display:flex;align-items:center;justify-content:center;transition:all .15s}
+.chk-box.on{background:var(--ac);border-color:var(--ac)}
+.chk-box.on::after{content:'✓';color:#fff;font-size:12px;font-weight:900}
+.chk-row p{margin:0;font-size:13px;color:#555;line-height:1.6}
+
+/* Submit button */
+.sbtn{width:100%;padding:15px;border-radius:12px;border:none;cursor:pointer;
+  color:#fff;font-weight:800;font-size:16px;font-family:inherit;margin-top:6px;
+  letter-spacing:.04em;transition:all .2s}
+.sbtn:hover:not(:disabled){transform:translateY(-2px);filter:brightness(1.1)}
+.sbtn:disabled{opacity:.55;cursor:not-allowed;transform:none}
+
+/* ── SUCCESS ─────────────────────────────────────── */
+#success{display:none;background:#fff;border-radius:20px;padding:56px 28px;
+  text-align:center;box-shadow:0 8px 48px rgba(0,0,0,.08)}
+.s-icon{font-size:54px;margin-bottom:16px}
+#success h3{font-family:Georgia,serif;font-size:24px;margin-bottom:12px}
+#success p{color:#666;line-height:1.75;max-width:380px;margin:0 auto 28px;font-size:15px}
+.back-btn{padding:11px 30px;border-radius:8px;background:transparent;font-weight:700;
+  cursor:pointer;font-family:inherit;font-size:14px;transition:all .2s;border:2px solid}
+.back-btn:hover{color:#fff}
+.trust{text-align:center;margin-top:22px;font-size:12px;color:#bbb;line-height:1.6}
+
+/* ── FOOTER ──────────────────────────────────────── */
+footer{background:#0A0618;padding:48px 20px;text-align:center}
+.ft{color:#E879F9;font-family:Georgia,serif;font-size:22px;letter-spacing:.05em;margin-bottom:6px}
+.fs{color:#C4B5FD;font-family:Georgia,serif;font-size:15px;font-style:italic;margin-bottom:10px}
+.fi{color:rgba(255,255,255,.3);font-size:12px}
+.fd{height:1px;width:80px;background:rgba(232,25,140,.2);margin:20px auto 0}
+
+/* ── RESPONSIVE ──────────────────────────────────── */
+@media(max-width:540px){
+  .row2,.dom-grid{grid-template-columns:1fr}
+  .fcard{padding:24px 18px}
+  .tbtn{font-size:12px;padding:10px 3px}
+  .tbtn .ticon{font-size:15px}
+  .stat-item{padding:8px 18px}
+}
+
+/* ── ANIMATIONS ──────────────────────────────────── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.fu{animation:fadeUp .7s ease forwards;opacity:0}
+.fu1{animation-delay:.1s}.fu2{animation-delay:.25s}
+.fu3{animation-delay:.4s}.fu4{animation-delay:.55s}.fu5{animation-delay:.7s}
+</style>
+</head>
+<body>
+
+<!-- ══ HERO ════════════════════════════════════════════ -->
+<section id="hero">
+  <div id="hero-bg"></div>
+  <div id="hero-overlay"></div>
+  <div id="hero-content">
+    <p class="hero-label fu fu1">Lighans Jordy Great Ministries</p>
+    <h1 class="hero-title fu fu2">Bethel</h1>
+    <p class="hero-edition fu fu2">7ème édition &nbsp;·&nbsp; Thème</p>
+    <h2 class="hero-theme fu fu3">Le Réveil des Sentinelles</h2>
+    <div class="hero-date fu fu3">
+      <b>📅 06–07 Novembre 2026</b>
+      <span>|</span>
+      <small>24H &nbsp;·&nbsp; À partir de 14H</small>
+    </div>
+    <div class="hero-btns fu fu4">
+      <button class="hbtn" onclick="goTab('participant')"
+        style="background:linear-gradient(135deg,#7B2FBE,#C2185B);box-shadow:0 6px 24px #C2185B55">
+        ✶ J'y serai
+      </button>
+      <button class="hbtn" onclick="goTab('benevole')"
+        style="background:linear-gradient(135deg,#0D6E6E,#0891B2);box-shadow:0 6px 24px #0891B255">
+        🤝 Je sers
+      </button>
+      <button class="hbtn" onclick="goTab('soutien')"
+        style="background:linear-gradient(135deg,#A06000,#D4AF37);box-shadow:0 6px 24px #D4AF3755">
+        ✦ Je soutiens
+      </button>
+      <button class="hbtn" onclick="goTab('priere')"
+        style="background:linear-gradient(135deg,#9B1D6E,#E91E8C);box-shadow:0 6px 24px #E91E8C55">
+        🙏 Prière
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ══ STATS ═══════════════════════════════════════════ -->
+<div id="stats-bar">
+  <div class="stat-item">
+    <div class="stat-num" id="cnt-participants" style="color:#A855F7">–</div>
+    <div class="stat-lbl">Participants</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num" id="cnt-benevoles" style="color:#22D3EE">–</div>
+    <div class="stat-lbl">Bénévoles</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num" id="cnt-soutiens" style="color:#FCD34D">–</div>
+    <div class="stat-lbl">Donateurs</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num" id="cnt-prieres" style="color:#F472B6">–</div>
+    <div class="stat-lbl">Requêtes de prière</div>
+  </div>
+</div>
+
+<!-- ══ REGISTER ════════════════════════════════════════ -->
+<section id="register">
+  <div class="reg-inner">
+    <div class="reg-header">
+      <small>Inscription</small>
+      <h2>Comment voulez-vous vous impliquer ?</h2>
+    </div>
+
+    <!-- Tabs -->
+    <div id="tab-bar">
+      <button class="tbtn active" data-tab="participant" onclick="switchTab('participant')">
+        <span class="ticon">✶</span>J'y serai
+        <span class="tbadge">Entrée gratuite</span>
+      </button>
+      <button class="tbtn" data-tab="benevole" onclick="switchTab('benevole')">
+        <span class="ticon">🤝</span>Je sers
+        <span class="tbadge">Équipe bénévoles</span>
+      </button>
+      <button class="tbtn" data-tab="soutien" onclick="switchTab('soutien')">
+        <span class="ticon">✦</span>Je soutiens
+        <span class="tbadge">Soutien financier</span>
+      </button>
+      <button class="tbtn" data-tab="priere" onclick="switchTab('priere')">
+        <span class="ticon">🙏</span>Prière
+        <span class="tbadge">Requête de prière</span>
+      </button>
+    </div>
+
+    <!-- ─── FORM : J'Y SERAI ─────────────────────────── -->
+    <div id="fp-participant" class="fpanel active">
+      <div class="fcard">
+        <div class="fhead">
+          <div class="ficon" style="background:#F3E5F5">✶</div>
+          <div>
+            <h3 style="color:#7B2FBE">J'y serai à Bethel 7</h3>
+            <p>Vendredi 6 – Samedi 7 Novembre 2026 · Entrée gratuite</p>
+          </div>
+        </div>
+        <form onsubmit="submitForm(event,'participants')">
+          <div class="row2">
+            <div class="fld">
+              <label>Prénom <span class="req" style="color:#7B2FBE">*</span></label>
+              <input class="inp" name="prenom" required placeholder="Votre prénom"
+                onfocus="this.style.borderColor='#7B2FBE'" onblur="this.style.borderColor='#EAE4F5'"/>
+            </div>
+            <div class="fld">
+              <label>Nom <span class="req" style="color:#7B2FBE">*</span></label>
+              <input class="inp" name="nom" required placeholder="Votre nom"
+                onfocus="this.style.borderColor='#7B2FBE'" onblur="this.style.borderColor='#EAE4F5'"/>
+            </div>
+          </div>
+          <div class="fld">
+            <label>Adresse e-mail <span class="req" style="color:#7B2FBE">*</span></label>
+            <input class="inp" name="email" type="email" required placeholder="votre@email.com"
+              onfocus="this.style.borderColor='#7B2FBE'" onblur="this.style.borderColor='#EAE4F5'"/>
+          </div>
+          <div class="row2">
+            <div class="fld">
+              <label>Téléphone</label>
+              <input class="inp" name="telephone" type="tel" placeholder="+33 6 00 00 00 00"
+                onfocus="this.style.borderColor='#7B2FBE'" onblur="this.style.borderColor='#EAE4F5'"/>
+            </div>
+            <div class="fld">
+              <label>Ville / Pays</label>
+              <input class="inp" name="ville" placeholder="Paris, France"
+                onfocus="this.style.borderColor='#7B2FBE'" onblur="this.style.borderColor='#EAE4F5'"/>
+            </div>
+          </div>
+          <div class="fld">
+            <label>Nombre de places <span class="req" style="color:#7B2FBE">*</span></label>
+            <div class="hint">Combien de personnes dans votre groupe ?</div>
+            <select class="sel" name="places"
+              onfocus="this.style.borderColor='#7B2FBE'" onblur="this.style.borderColor='#EAE4F5'">
+              <option value="1">1 personne</option>
+              <option value="2">2 personnes</option>
+              <option value="3">3 personnes</option>
+              <option value="4">4 personnes</option>
+              <option value="5">5 personnes</option>
+              <option value="6">6 personnes</option>
+              <option value="7+">7 personnes et plus</option>
+            </select>
+          </div>
+          <div class="fld">
+            <label>Comment avez-vous entendu parler de Bethel 7 ?</label>
+            <select class="sel" name="source"
+              onfocus="this.style.borderColor='#7B2FBE'" onblur="this.style.borderColor='#EAE4F5'">
+              <option value="">Choisissez une option</option>
+              <option>Réseaux sociaux</option>
+              <option>Un ami / membre de famille</option>
+              <option>Mon église</option>
+              <option>Affiche / flyer</option>
+              <option>Autre</option>
+            </select>
+          </div>
+          <button type="submit" class="sbtn"
+            style="background:linear-gradient(135deg,#7B2FBE,#C2185B);box-shadow:0 6px 24px #7B2FBE44">
+            Confirmer mon inscription ✶
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- ─── FORM : BÉNÉVOLE ──────────────────────────── -->
+    <div id="fp-benevole" class="fpanel">
+      <div class="fcard">
+        <div class="fhead">
+          <div class="ficon" style="background:#E0F5F5">🤝</div>
+          <div>
+            <h3 style="color:#0D6E6E">Je veux servir à Bethel 7</h3>
+            <p>Rejoindre l'équipe de bénévoles</p>
+          </div>
+        </div>
+        <form onsubmit="submitBenevole(event)">
+          <div class="row2">
+            <div class="fld">
+              <label>Prénom <span class="req" style="color:#0D6E6E">*</span></label>
+              <input class="inp" name="prenom" required placeholder="Votre prénom"
+                onfocus="this.style.borderColor='#0D6E6E'" onblur="this.style.borderColor='#EAE4F5'"/>
+            </div>
+            <div class="fld">
+              <label>Nom <span class="req" style="color:#0D6E6E">*</span></label>
+              <input class="inp" name="nom" required placeholder="Votre nom"
+                onfocus="this.style.borderColor='#0D6E6E'" onblur="this.style.borderColor='#EAE4F5'"/>
+            </div>
+          </div>
+          <div class="fld">
+            <label>Adresse e-mail <span class="req" style="color:#0D6E6E">*</span></label>
+            <input class="inp" name="email" type="email" required placeholder="votre@email.com"
+              onfocus="this.style.borderColor='#0D6E6E'" onblur="this.style.borderColor='#EAE4F5'"/>
+          </div>
+          <div class="fld">
+            <label>Téléphone <span class="req" style="color:#0D6E6E">*</span></label>
+            <input class="inp" name="telephone" type="tel" required placeholder="+33 6 00 00 00 00"
+              onfocus="this.style.borderColor='#0D6E6E'" onblur="this.style.borderColor='#EAE4F5'"/>
+          </div>
+          <div class="fld">
+            <label>Domaine(s) de service <span class="req" style="color:#0D6E6E">*</span></label>
+            <div class="hint">Sélectionnez un ou plusieurs domaines</div>
+            <div class="dom-grid" id="dom-grid"></div>
+          </div>
+          <div class="fld">
+            <label>Disponibilité <span class="req" style="color:#0D6E6E">*</span></label>
+            <select class="sel" name="dispo" required
+              onfocus="this.style.borderColor='#0D6E6E'" onblur="this.style.borderColor='#EAE4F5'">
+              <option value="">Choisissez votre disponibilité</option>
+              <option>Vendredi 6 Nov (après-midi &amp; soirée)</option>
+              <option>Samedi 7 Nov (nuit &amp; matinée)</option>
+              <option>Les deux jours — durée complète</option>
+              <option>À définir selon les besoins</option>
+            </select>
+          </div>
+          <div class="fld">
+            <label>Avez-vous déjà servi en événementiel ?</label>
+            <select class="sel" name="experience"
+              onfocus="this.style.borderColor='#0D6E6E'" onblur="this.style.borderColor='#EAE4F5'">
+              <option value="">Choisissez une option</option>
+              <option>Oui, plusieurs fois</option>
+              <option>Oui, une ou deux fois</option>
+              <option>Non, c'est ma première fois</option>
+            </select>
+          </div>
+          <div class="fld">
+            <label>Motivation (optionnel)</label>
+            <div class="hint">Pourquoi souhaitez-vous servir à Bethel 7 ?</div>
+            <textarea class="txa" name="motivation" rows="3" placeholder="Partagez votre cœur…"
+              onfocus="this.style.borderColor='#0D6E6E'" onblur="this.style.borderColor='#EAE4F5'"></textarea>
+          </div>
+          <button type="submit" class="sbtn"
+            style="background:linear-gradient(135deg,#0D6E6E,#0891B2);box-shadow:0 6px 24px #0D6E6E44">
+            Rejoindre l'équipe 🤝
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- ─── FORM : SOUTIEN ───────────────────────────── -->
+    <div id="fp-soutien" class="fpanel">
+      <div class="fcard">
+        <div class="fhead">
+          <div class="ficon" style="background:#FFF8E1">✦</div>
+          <div>
+            <h3 style="color:#A06000">Je soutiens Bethel 7</h3>
+            <p>Participer à l'œuvre par un soutien financier</p>
+          </div>
+        </div>
+        <div class="notice" style="background:#FFFBEC;border:1px solid #F0D060;color:#7A6000">
+          💛 <strong>Chaque don contribue directement</strong> à la couverture des frais de location,
+          de son &amp; lumières, de restauration et de communication pour que cet événement soit
+          un moment de gloire pour le Seigneur.
+        </div>
+        <form onsubmit="submitForm(event,'soutiens')">
+          <div class="row2">
+            <div class="fld">
+              <label>Prénom <span class="req" style="color:#A06000">*</span></label>
+              <input class="inp" name="prenom" required placeholder="Votre prénom"
+                onfocus="this.style.borderColor='#A06000'" onblur="this.style.borderColor='#EAE4F5'"/>
+            </div>
+            <div class="fld">
+              <label>Nom <span class="req" style="color:#A06000">*</span></label>
+              <input class="inp" name="nom" required placeholder="Votre nom"
+                onfocus="this.style.borderColor='#A06000'" onblur="this.style.borderColor='#EAE4F5'"/>
+            </div>
+          </div>
+          <div class="fld">
+            <label>Adresse e-mail <span class="req" style="color:#A06000">*</span></label>
+            <input class="inp" name="email" type="email" required placeholder="votre@email.com"
+              onfocus="this.style.borderColor='#A06000'" onblur="this.style.borderColor='#EAE4F5'"/>
+          </div>
+          <div class="fld">
+            <label>Téléphone</label>
+            <input class="inp" name="telephone" type="tel" placeholder="+33 6 00 00 00 00"
+              onfocus="this.style.borderColor='#A06000'" onblur="this.style.borderColor='#EAE4F5'"/>
+          </div>
+          <div class="fld">
+            <label>Type de soutien <span class="req" style="color:#A06000">*</span></label>
+            <select class="sel" name="type_soutien" required
+              onfocus="this.style.borderColor='#A06000'" onblur="this.style.borderColor='#EAE4F5'">
+              <option value="">Choisissez une option</option>
+              <option>Don ponctuel</option>
+              <option>Partenaire de l'événement</option>
+              <option>Soutien en nature (matériel, prestation…)</option>
+              <option>Parrainage d'un intervenant</option>
+            </select>
+          </div>
+          <div class="fld">
+            <label>Comment souhaitez-vous être contacté(e) ?</label>
+            <select class="sel" name="contact_pref"
+              onfocus="this.style.borderColor='#A06000'" onblur="this.style.borderColor='#EAE4F5'">
+              <option value="">Choisissez une option</option>
+              <option>Par e-mail</option>
+              <option>Par téléphone</option>
+              <option>Par WhatsApp</option>
+            </select>
+          </div>
+          <div class="fld">
+            <label>Message (optionnel)</label>
+            <textarea class="txa" name="message" rows="3" placeholder="Un mot, une prière, une question…"
+              onfocus="this.style.borderColor='#A06000'" onblur="this.style.borderColor='#EAE4F5'"></textarea>
+          </div>
+          <button type="submit" class="sbtn"
+            style="background:linear-gradient(135deg,#A06000,#D4AF37);box-shadow:0 6px 24px #A0600044">
+            Confirmer mon soutien ✦
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- ─── FORM : PRIÈRE ────────────────────────────── -->
+    <div id="fp-priere" class="fpanel">
+      <div class="fcard">
+        <div class="fhead">
+          <div class="ficon" style="background:#FCE7F3">🙏</div>
+          <div>
+            <h3 style="color:#9B1D6E">Soumettre une requête de prière</h3>
+            <p>Confiez votre besoin — nous prierons pour vous</p>
+          </div>
+        </div>
+        <div class="notice" style="background:#FDF2F8;border:1px solid #F9A8D4;color:#831843">
+          💜 <strong>Vos requêtes seront portées en prière</strong> par l'équipe d'intercession
+          de Bethel 7 avant et pendant les 24h. Elles resteront strictement confidentielles.
+        </div>
+
+        <!-- Toggle anonyme -->
+        <div class="tog-row" style="background:#FDF2F8;--ac:#9B1D6E" onclick="toggleAnon()">
+          <div class="tog-track" id="anon-trk"><div class="tog-thumb"></div></div>
+          <div class="tog-txt">
+            <p>Soumettre anonymement</p>
+            <small>Votre nom ne sera pas visible par l'équipe</small>
+          </div>
+        </div>
+
+        <form onsubmit="submitPriere(event)">
+          <div id="priere-id">
+            <div class="row2">
+              <div class="fld">
+                <label>Prénom <span class="req" style="color:#9B1D6E">*</span></label>
+                <input class="inp" id="pri-prenom" name="prenom" placeholder="Votre prénom"
+                  onfocus="this.style.borderColor='#9B1D6E'" onblur="this.style.borderColor='#EAE4F5'"/>
+              </div>
+              <div class="fld">
+                <label>Nom</label>
+                <input class="inp" name="nom" placeholder="Votre nom"
+                  onfocus="this.style.borderColor='#9B1D6E'" onblur="this.style.borderColor='#EAE4F5'"/>
+              </div>
+            </div>
+          </div>
+          <div class="fld">
+            <label>E-mail (optionnel)</label>
+            <div class="hint">Pour recevoir une confirmation que nous avons prié pour vous</div>
+            <input class="inp" name="email" type="email" placeholder="votre@email.com"
+              onfocus="this.style.borderColor='#9B1D6E'" onblur="this.style.borderColor='#EAE4F5'"/>
+          </div>
+          <div class="fld">
+            <label>Catégorie(s) de prière <span class="req" style="color:#9B1D6E">*</span></label>
+            <div class="hint">Sélectionnez un ou plusieurs domaines</div>
+            <div class="dom-grid" id="pri-grid"></div>
+          </div>
+          <div class="fld">
+            <label>Votre requête <span class="req" style="color:#9B1D6E">*</span></label>
+            <div class="hint">Décrivez votre besoin — soyez aussi précis(e) que vous le souhaitez</div>
+            <textarea class="txa" name="requete" rows="5" required
+              placeholder="Seigneur, je présente ce besoin devant Toi…"
+              onfocus="this.style.borderColor='#9B1D6E'" onblur="this.style.borderColor='#EAE4F5'"></textarea>
+          </div>
+          <div class="fld">
+            <label>Cette requête est-elle urgente ?</label>
+            <select class="sel" name="urgent"
+              onfocus="this.style.borderColor='#9B1D6E'" onblur="this.style.borderColor='#EAE4F5'">
+              <option value="Non">Non — prière générale</option>
+              <option value="Oui">Oui — situation urgente</option>
+              <option value="Très urgent">Très urgent — besoin immédiat</option>
+            </select>
+          </div>
+          <div class="chk-row" style="background:#FDF2F8;--ac:#9B1D6E" onclick="toggleAccord()">
+            <div class="chk-box" id="accord-chk"></div>
+            <p>J'accepte que ma requête soit portée en accord de prière par les intercésseurs de Bethel 7 pendant l'événement.</p>
+          </div>
+          <button type="submit" class="sbtn"
+            style="background:linear-gradient(135deg,#9B1D6E,#E91E8C);box-shadow:0 6px 24px #9B1D6E44">
+            Soumettre ma requête 🙏
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- ─── SUCCESS ──────────────────────────────────── -->
+    <div id="success">
+      <div class="s-icon" id="s-icon">✦</div>
+      <h3 id="s-title" style="color:#7B2FBE">Inscription enregistrée !</h3>
+      <p id="s-text"></p>
+      <button class="back-btn" id="s-back" onclick="resetForm()">← Nouvelle inscription</button>
+    </div>
+
+    <p class="trust">
+      🔒 Vos données sont utilisées uniquement dans le cadre de l'organisation de Bethel 7
+      et ne seront jamais partagées avec des tiers.
+    </p>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══════════════════════════════════════════ -->
+<footer>
+  <p class="ft">✦ BETHEL 7 ✦</p>
+  <p class="fs">Le Réveil des Sentinelles</p>
+  <p class="fi">Vendredi 6 Novembre 2026 à 14h → Samedi 7 Novembre 2026 à 14h</p>
+  <div class="fd"></div>
+</footer>
+
+<script>
+// ── Config par tab ──────────────────────────────────────────────────
+const TABS = {
+  participant: { color:"#7B2FBE", icon:"✦", title:"Inscription enregistrée !",
+    msg:"Merci pour votre engagement. Nous avons bien reçu votre inscription et revenons vers vous très prochainement.",
+    em:"Que Sa gloire soit révélée — Bethel 7" },
+  benevole: { color:"#0D6E6E", icon:"🤝", title:"Demande de bénévolat reçue !",
+    msg:"Merci pour votre disponibilité. L'équipe d'organisation prendra contact avec vous très prochainement.",
+    em:"Ensemble pour Sa gloire — Bethel 7" },
+  soutien: { color:"#A06000", icon:"✦", title:"Soutien confirmé !",
+    msg:"Merci du fond du cœur pour votre générosité. Nous reviendrons vers vous pour les modalités de votre don.",
+    em:"Que le Seigneur vous bénisse au centuple — Bethel 7" },
+  priere: { color:"#9B1D6E", icon:"🙏", title:"Requête reçue 🙏",
+    msg:"Votre requête a bien été transmise à l'équipe d'intercession. Nous la porterons devant le Seigneur avec foi.",
+    em:"Il entend chaque prière — Bethel 7" },
+};
+
+const DOM_BEN = [
+  "🤝 Accueil & orientation","🎛️ Technique & son","🛡️ Sécurité & ordre",
+  "🍽️ Restauration","📱 Médias & réseaux","👶 Espace enfants",
+  "🎨 Décoration & scéno","🎤 Support artistique","🚗 Logistique",
+  "🌐 Interprète Anglais → Français","🌐 Interprète Français → Anglais","Autre",
+];
+const DOM_PRI = [
+  "🙏 Guérison & santé","👨‍👩‍👧 Famille & mariage","💼 Travail & finances",
+  "🕊️ Paix & délivrance","📖 Croissance spirituelle","🌍 Intercession nationale",
+  "❤️ Relation amoureuse","🎓 Études & orientation","⛪ Église & ministère","Autre",
+];
+
+// ── État global ─────────────────────────────────────────────────────
+let curTab = "participant";
+let domBen = [], domPri = [];
+let isAnon = false, hasAccord = false;
+
+// ── Init ────────────────────────────────────────────────────────────
+document.addEventListener("DOMContentLoaded", () => {
+  buildGrid("dom-grid", DOM_BEN, domBen, "#0D6E6E");
+  buildGrid("pri-grid", DOM_PRI, domPri, "#9B1D6E");
+  // Active tab initial style
+  applyTabStyle(document.querySelector('.tbtn[data-tab="participant"]'), "#7B2FBE");
+  loadStats();
+  setInterval(loadStats, 30000);
+});
+
+// ── Grille multi-sélection ──────────────────────────────────────────
+function buildGrid(id, items, arr, color) {
+  const g = document.getElementById(id);
+  g.innerHTML = "";
+  items.forEach(item => {
+    const b = document.createElement("button");
+    b.type = "button"; b.className = "dbtn"; b.textContent = item;
+    b.onclick = () => {
+      const i = arr.indexOf(item);
+      if (i > -1) { arr.splice(i,1); b.classList.remove("sel"); b.style.background=""; b.style.color=""; }
+      else { arr.push(item); b.classList.add("sel"); b.style.background=color; b.style.color="#fff"; }
+    };
+    g.appendChild(b);
+  });
+}
+
+// ── Tabs ────────────────────────────────────────────────────────────
+const TAB_COLORS = { participant:"#7B2FBE", benevole:"#0D6E6E", soutien:"#A06000", priere:"#9B1D6E" };
+
+function applyTabStyle(btn, color) {
+  btn.style.background  = color;
+  btn.style.boxShadow   = `0 4px 18px ${color}44`;
+}
+function clearTabStyle(btn) {
+  btn.style.background = "";
+  btn.style.boxShadow  = "";
+}
+
+function switchTab(tab) {
+  curTab = tab;
+  document.querySelectorAll(".tbtn").forEach(b => {
+    if (b.dataset.tab === tab) { b.classList.add("active");    applyTabStyle(b, TAB_COLORS[tab]); }
+    else                        { b.classList.remove("active"); clearTabStyle(b); }
+  });
+  document.querySelectorAll(".fpanel").forEach(p => p.classList.remove("active"));
+  document.getElementById("fp-" + tab).classList.add("active");
+  document.getElementById("success").style.display = "none";
+}
+
+function goTab(tab) {
+  switchTab(tab);
+  document.getElementById("register").scrollIntoView({ behavior:"smooth" });
+}
+
+// ── Stats ────────────────────────────────────────────────────────────
+async function loadStats() {
+  try {
+    const r = await fetch("/api/stats");
+    const s = await r.json();
+    ["participants","benevoles","soutiens","prieres"].forEach(t => {
+      const el = document.getElementById("cnt-" + t);
+      if (el) el.textContent = s[t] ?? 0;
+    });
+  } catch {}
+}
+
+// ── Soumission générique ─────────────────────────────────────────────
+async function submitForm(e, type) {
+  e.preventDefault();
+  const form = e.target;
+  const btn  = form.querySelector(".sbtn");
+  const orig = btn.textContent;
+  const data = Object.fromEntries(new FormData(form).entries());
+
+  btn.disabled = true; btn.textContent = "Envoi en cours…";
+  try {
+    const res    = await fetch("/api/register/" + type, {
+      method:"POST", headers:{"Content-Type":"application/json"}, body:JSON.stringify(data),
+    });
+    const result = await res.json();
+    if (result.success) { showSuccess(); loadStats(); }
+    else alert("Erreur lors de l'inscription. Réessayez.");
+  } catch { alert("Erreur de connexion. Vérifiez votre connexion et réessayez."); }
+  finally { btn.disabled = false; btn.textContent = orig; }
+}
+
+// ── Bénévole ──────────────────────────────────────────────────────────
+async function submitBenevole(e) {
+  e.preventDefault();
+  if (!domBen.length) { alert("Veuillez sélectionner au moins un domaine de service."); return; }
+  const form = e.target, btn = form.querySelector(".sbtn"), orig = btn.textContent;
+  const data = Object.fromEntries(new FormData(form).entries());
+  data.domaines = domBen.join(", ");
+
+  btn.disabled = true; btn.textContent = "Envoi en cours…";
+  try {
+    const res = await fetch("/api/register/benevoles", {
+      method:"POST", headers:{"Content-Type":"application/json"}, body:JSON.stringify(data),
+    });
+    const result = await res.json();
+    if (result.success) { showSuccess(); loadStats(); }
+    else alert("Erreur lors de l'inscription.");
+  } catch { alert("Erreur de connexion."); }
+  finally { btn.disabled = false; btn.textContent = orig; }
+}
+
+// ── Prière ────────────────────────────────────────────────────────────
+function toggleAnon() {
+  isAnon = !isAnon;
+  document.getElementById("anon-trk").classList.toggle("on", isAnon);
+  document.getElementById("priere-id").style.display = isAnon ? "none" : "block";
+  const inp = document.getElementById("pri-prenom");
+  if (inp) inp.required = !isAnon;
+}
+function toggleAccord() {
+  hasAccord = !hasAccord;
+  document.getElementById("accord-chk").classList.toggle("on", hasAccord);
+}
+
+async function submitPriere(e) {
+  e.preventDefault();
+  if (!domPri.length) { alert("Veuillez sélectionner au moins une catégorie de prière."); return; }
+  const form = e.target, btn = form.querySelector(".sbtn"), orig = btn.textContent;
+  const data = Object.fromEntries(new FormData(form).entries());
+  data.categories    = domPri.join(", ");
+  data.anonyme       = isAnon    ? "Oui" : "Non";
+  data.accord_priere = hasAccord ? "Oui" : "Non";
+  if (isAnon) { delete data.prenom; delete data.nom; }
+
+  btn.disabled = true; btn.textContent = "Envoi en cours…";
+  try {
+    const res = await fetch("/api/register/prieres", {
+      method:"POST", headers:{"Content-Type":"application/json"}, body:JSON.stringify(data),
+    });
+    const result = await res.json();
+    if (result.success) { showSuccess(); loadStats(); }
+    else alert("Erreur lors de l'envoi.");
+  } catch { alert("Erreur de connexion."); }
+  finally { btn.disabled = false; btn.textContent = orig; }
+}
+
+// ── Succès ────────────────────────────────────────────────────────────
+function showSuccess() {
+  const cfg = TABS[curTab];
+  document.querySelectorAll(".fpanel").forEach(p => p.classList.remove("active"));
+  document.getElementById("s-icon").textContent  = cfg.icon;
+  document.getElementById("s-title").textContent = cfg.title;
+  document.getElementById("s-title").style.color = cfg.color;
+  document.getElementById("s-text").innerHTML    =
+    cfg.msg + `<br/><br/><em style="color:${cfg.color}">${cfg.em}</em>`;
+  const back = document.getElementById("s-back");
+  back.style.borderColor = cfg.color;
+  back.style.color       = cfg.color;
+  back.onmouseenter = () => { back.style.background=cfg.color; back.style.color="#fff"; };
+  back.onmouseleave = () => { back.style.background=""; back.style.color=cfg.color; };
+  document.getElementById("success").style.display = "block";
+  document.getElementById("success").scrollIntoView({ behavior:"smooth", block:"center" });
+}
+
+function resetForm() {
+  document.getElementById("success").style.display = "none";
+  document.getElementById("fp-" + curTab).classList.add("active");
+  document.querySelectorAll("#fp-" + curTab + " form").forEach(f => f.reset());
+  domBen = []; domPri = [];
+  buildGrid("dom-grid", DOM_BEN, domBen, "#0D6E6E");
+  buildGrid("pri-grid", DOM_PRI, domPri, "#9B1D6E");
+  isAnon = false; hasAccord = false;
+  const trk = document.getElementById("anon-trk");
+  if (trk) trk.classList.remove("on");
+  const pid = document.getElementById("priere-id");
+  if (pid) pid.style.display = "block";
+  document.getElementById("accord-chk").classList.remove("on");
+}
+</script>
+</body>
+</html>

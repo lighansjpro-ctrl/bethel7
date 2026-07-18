@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Bethel 7 — Administration</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Helvetica Neue',Arial,sans-serif;background:#0A0618;min-height:100vh}
+
+/* LOGIN */
+#login{display:flex;align-items:center;justify-content:center;min-height:100vh;
+  background:linear-gradient(160deg,#0A0618,#1A0836)}
+.lcard{background:#fff;border-radius:20px;padding:40px 36px;width:100%;max-width:380px;
+  box-shadow:0 20px 60px rgba(0,0,0,.5);text-align:center}
+.ltitle{font-family:Georgia,serif;font-size:22px;color:#7B2FBE;margin-bottom:4px}
+.lsub{font-size:13px;color:#888;margin-bottom:28px}
+.linp{width:100%;padding:13px 16px;border:2px solid #EAE4F5;border-radius:10px;
+  font-size:15px;font-family:inherit;outline:none;margin-bottom:16px;transition:border-color .2s}
+.linp:focus{border-color:#7B2FBE}
+.lbtn{width:100%;padding:14px;border-radius:12px;border:none;cursor:pointer;
+  background:linear-gradient(135deg,#7B2FBE,#C2185B);color:#fff;font-weight:800;
+  font-size:15px;font-family:inherit;transition:all .2s}
+.lbtn:hover{filter:brightness(1.1)}
+.lerr{color:#dc2626;font-size:13px;margin-top:12px;display:none}
+
+/* PANEL */
+#panel{display:none;min-height:100vh;background:#F0EBF8}
+.pheader{background:linear-gradient(135deg,#1A0836,#3B0764);padding:18px 28px;
+  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;
+  position:sticky;top:0;z-index:10;box-shadow:0 2px 20px rgba(0,0,0,.3)}
+.ptitle{color:#E879F9;font-family:Georgia,serif;font-size:20px}
+.ptitle small{color:rgba(255,255,255,.4);font-size:12px;font-family:sans-serif;
+  font-weight:400;display:block;margin-top:1px}
+.pout{padding:8px 18px;border-radius:8px;border:1px solid rgba(232,25,140,.4);
+  color:#E879F9;background:transparent;cursor:pointer;font-family:inherit;
+  font-size:13px;transition:all .2s}
+.pout:hover{background:rgba(232,25,140,.1)}
+
+/* STATS */
+.pstats{display:flex;gap:12px;padding:24px 28px;flex-wrap:wrap}
+.astat{background:#fff;border-radius:14px;padding:18px 22px;flex:1;min-width:140px;
+  box-shadow:0 2px 12px rgba(0,0,0,.06)}
+.asn{font-size:30px;font-weight:800;font-family:Georgia,serif}
+.asl{font-size:12px;color:#888;margin-top:3px;text-transform:uppercase;letter-spacing:.04em}
+
+/* TABS */
+.ptabs{display:flex;gap:4px;padding:0 28px;border-bottom:2px solid #E8E0F0;background:#F0EBF8}
+.ptab{padding:12px 20px;border:none;background:transparent;cursor:pointer;
+  font-family:inherit;font-size:14px;font-weight:600;color:#888;
+  border-bottom:2px solid transparent;margin-bottom:-2px;transition:all .2s;white-space:nowrap}
+.ptab.active{color:#7B2FBE;border-bottom-color:#7B2FBE}
+.ptab:hover:not(.active){color:#555}
+
+/* TABLE ZONE */
+.tzone{padding:24px 28px;overflow-x:auto}
+.tactions{display:flex;gap:10px;margin-bottom:18px;flex-wrap:wrap;align-items:center}
+.xbtn{padding:9px 20px;border-radius:8px;border:none;cursor:pointer;
+  background:#7B2FBE;color:#fff;font-weight:700;font-family:inherit;font-size:13px;
+  transition:all .2s}
+.xbtn:hover{background:#6B21A8}
+.rfbtn{padding:9px 14px;border-radius:8px;border:1px solid #DDD6FE;cursor:pointer;
+  background:#fff;color:#7B2FBE;font-family:inherit;font-size:13px;transition:all .2s}
+.rfbtn:hover{background:#F3F0FF}
+.srch{padding:9px 14px;border:1px solid #DDD6FE;border-radius:8px;font-family:inherit;
+  font-size:13px;outline:none;width:220px}
+.srch:focus{border-color:#7B2FBE}
+.loading{padding:40px;text-align:center;color:#aaa;font-size:15px}
+table{width:100%;border-collapse:collapse;background:#fff;border-radius:14px;
+  overflow:hidden;box-shadow:0 2px 16px rgba(0,0,0,.07);font-size:13px;min-width:600px}
+th{background:#7B2FBE;color:#fff;padding:12px 14px;text-align:left;font-weight:700;
+  font-size:11px;text-transform:uppercase;letter-spacing:.06em;white-space:nowrap}
+td{padding:11px 14px;border-bottom:1px solid #F0EBF8;vertical-align:top;
+  max-width:240px;word-break:break-word;color:#333}
+tr:hover td{background:#FAF8FF}
+tr:last-child td{border-bottom:none}
+.dbtn{padding:4px 10px;border-radius:6px;border:1px solid #FCA5A5;background:#fff;
+  color:#dc2626;cursor:pointer;font-size:12px;font-family:inherit;transition:all .15s}
+.dbtn:hover{background:#dc2626;color:#fff}
+.badge{display:inline-block;padding:3px 9px;border-radius:20px;font-size:11px;font-weight:700}
+.empty{padding:48px;text-align:center;color:#aaa;font-style:italic;font-size:15px}
+.count-lbl{color:#666;font-size:13px;margin-left:auto}
+
+@media(max-width:600px){
+  .pstats{gap:8px}.astat{padding:14px 16px}
+  .ptabs{padding:0 14px}.tzone{padding:16px}
+}
+</style>
+</head>
+<body>
+
+<!-- ══ LOGIN ═══════════════════════════════════════════ -->
+<div id="login">
+  <div class="lcard">
+    <div style="font-size:36px;margin-bottom:14px">🔐</div>
+    <h2 class="ltitle">Bethel 7 — Admin</h2>
+    <p class="lsub">Entrez le mot de passe pour accéder au tableau de bord des inscriptions</p>
+    <input class="linp" type="password" id="pw" placeholder="Mot de passe admin"
+      onkeydown="if(event.key==='Enter')login()"/>
+    <button class="lbtn" onclick="login()">Accéder →</button>
+    <p class="lerr" id="lerr">❌ Mot de passe incorrect</p>
+  </div>
+</div>
+
+<!-- ══ PANEL ════════════════════════════════════════════ -->
+<div id="panel">
+  <div class="pheader">
+    <div class="ptitle">
+      ✦ Bethel 7 — Tableau de bord
+      <small>Le Réveil des Sentinelles · 6–7 Novembre 2026</small>
+    </div>
+    <button class="pout" onclick="logout()">Déconnexion</button>
+  </div>
+
+  <div class="pstats">
+    <div class="astat">
+      <div class="asn" id="as-p" style="color:#7B2FBE">–</div>
+      <div class="asl">Participants</div>
+    </div>
+    <div class="astat">
+      <div class="asn" id="as-b" style="color:#0D6E6E">–</div>
+      <div class="asl">Bénévoles</div>
+    </div>
+    <div class="astat">
+      <div class="asn" id="as-s" style="color:#A06000">–</div>
+      <div class="asl">Donateurs</div>
+    </div>
+    <div class="astat">
+      <div class="asn" id="as-pr" style="color:#9B1D6E">–</div>
+      <div class="asl">Prières</div>
+    </div>
+  </div>
+
+  <div class="ptabs">
+    <button class="ptab active" onclick="showTab('participants')">✶ Participants</button>
+    <button class="ptab" onclick="showTab('benevoles')">🤝 Bénévoles</button>
+    <button class="ptab" onclick="showTab('soutiens')">✦ Donateurs</button>
+    <button class="ptab" onclick="showTab('prieres')">🙏 Prières</button>
+  </div>
+
+  <div class="tzone">
+    <div class="tactions">
+      <button class="xbtn" onclick="exportCSV()">⬇ Exporter CSV (Excel)</button>
+      <button class="rfbtn" onclick="loadTab(curType)">↺ Rafraîchir</button>
+      <input class="srch" type="search" id="search" placeholder="Rechercher…" oninput="filterTable()"/>
+      <span class="count-lbl" id="count-lbl"></span>
+    </div>
+    <div id="table-zone"><div class="loading">Chargement…</div></div>
+  </div>
+</div>
+
+<script>
+let pw = "";
+let curType = "participants";
+let allData = [];
+
+const COLS = {
+  prenom:"Prénom", nom:"Nom", email:"Email", telephone:"Téléphone",
+  ville:"Ville", places:"Places", source:"Source", domaines:"Domaines",
+  dispo:"Disponibilité", experience:"Expérience", motivation:"Motivation",
+  type_soutien:"Type soutien", contact_pref:"Contact préféré", message:"Message",
+  anonyme:"Anonyme", categories:"Catégories", requete:"Requête",
+  urgent:"Urgent", accord_priere:"Accord", date:"Date",
+};
+const STAT_MAP = { participants:"as-p", benevoles:"as-b", soutiens:"as-s", prieres:"as-pr" };
+
+// ── Login ────────────────────────────────────────────────────────────
+async function login() {
+  const val = document.getElementById("pw").value.trim();
+  if (!val) return;
+  try {
+    const r = await fetch(`/api/admin/participants?password=${encodeURIComponent(val)}`);
+    if (r.status === 401) { document.getElementById("lerr").style.display="block"; return; }
+    pw = val;
+    document.getElementById("login").style.display  = "none";
+    document.getElementById("panel").style.display  = "block";
+    loadStats();
+    loadTab("participants");
+  } catch { document.getElementById("lerr").style.display="block"; }
+}
+
+function logout() {
+  pw = "";
+  document.getElementById("login").style.display  = "flex";
+  document.getElementById("panel").style.display  = "none";
+  document.getElementById("pw").value = "";
+  document.getElementById("lerr").style.display   = "none";
+}
+
+// ── Stats ────────────────────────────────────────────────────────────
+async function loadStats() {
+  const r = await fetch("/api/stats");
+  const s = await r.json();
+  document.getElementById("as-p").textContent  = s.participants ?? "–";
+  document.getElementById("as-b").textContent  = s.benevoles    ?? "–";
+  document.getElementById("as-s").textContent  = s.soutiens     ?? "–";
+  document.getElementById("as-pr").textContent = s.prieres      ?? "–";
+}
+
+// ── Tabs ─────────────────────────────────────────────────────────────
+function showTab(type) {
+  curType = type;
+  document.querySelectorAll(".ptab").forEach((b,i) => {
+    const types = ["participants","benevoles","soutiens","prieres"];
+    b.classList.toggle("active", types[i] === type);
+  });
+  loadTab(type);
+}
+
+async function loadTab(type) {
+  document.getElementById("table-zone").innerHTML = '<div class="loading">Chargement…</div>';
+  document.getElementById("search").value = "";
+  try {
+    const r = await fetch(`/api/admin/${type}?password=${encodeURIComponent(pw)}`);
+    if (r.status === 401) { logout(); return; }
+    allData = await r.json();
+    renderTable(allData);
+  } catch { document.getElementById("table-zone").innerHTML = '<div class="empty">Erreur de chargement.</div>'; }
+}
+
+function renderTable(data) {
+  document.getElementById("count-lbl").textContent =
+    data.length ? `${data.length} inscription${data.length > 1 ? "s" : ""}` : "";
+
+  if (!data.length) {
+    document.getElementById("table-zone").innerHTML = '<div class="empty">Aucune inscription pour ce type.</div>';
+    return;
+  }
+  const keys = Object.keys(data[0]).filter(k => !["id","type"].includes(k));
+  document.getElementById("table-zone").innerHTML = `
+    <table>
+      <thead><tr>
+        ${keys.map(k => `<th>${COLS[k] || k}</th>`).join("")}
+        <th>Action</th>
+      </tr></thead>
+      <tbody>
+        ${data.map(row => `
+          <tr>
+            ${keys.map(k => `<td>${fmt(k, row[k])}</td>`).join("")}
+            <td><button class="dbtn" onclick="del('${curType}', ${row.id})">🗑 Supprimer</button></td>
+          </tr>
+        `).join("")}
+      </tbody>
+    </table>`;
+}
+
+// ── Formatage cellule ────────────────────────────────────────────────
+function fmt(k, v) {
+  if (!v && v !== 0) return '<span style="color:#ccc">—</span>';
+  const s = String(v).replace(/</g,"&lt;");
+  if (k === "urgent") {
+    const c = v === "Très urgent" ? "#dc2626" : v === "Oui" ? "#f59e0b" : "#22c55e";
+    return `<span class="badge" style="background:${c}22;color:${c}">${s}</span>`;
+  }
+  if (k === "anonyme") {
+    return v === "Oui"
+      ? `<span class="badge" style="background:#FEE2E2;color:#dc2626">Anonyme</span>`
+      : `<span class="badge" style="background:#DCFCE7;color:#16a34a">Non</span>`;
+  }
+  if (k === "accord_priere") {
+    const c = v === "Oui" ? "#16a34a" : "#dc2626";
+    return `<span class="badge" style="background:${c}22;color:${c}">${s}</span>`;
+  }
+  return s;
+}
+
+// ── Recherche ────────────────────────────────────────────────────────
+function filterTable() {
+  const q = document.getElementById("search").value.toLowerCase();
+  const filtered = q ? allData.filter(row =>
+    Object.values(row).some(v => String(v).toLowerCase().includes(q))
+  ) : allData;
+  renderTable(filtered);
+}
+
+// ── Suppression ──────────────────────────────────────────────────────
+async function del(type, id) {
+  if (!confirm("Supprimer cette inscription définitivement ?")) return;
+  await fetch(`/api/admin/${type}/${id}?password=${encodeURIComponent(pw)}`, { method:"DELETE" });
+  await loadStats();
+  loadTab(type);
+}
+
+// ── Export CSV ───────────────────────────────────────────────────────
+function exportCSV() {
+  window.open(`/api/export/${curType}?password=${encodeURIComponent(pw)}`);
+}
+</script>
+</body>
+</html>

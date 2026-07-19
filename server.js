@@ -11,7 +11,7 @@ const app        = express();
 const PORT       = process.env.PORT || 3000;
 const ADMIN_PASS = process.env.ADMIN_PASSWORD || "bethel7admin";
 const DATA_DIR   = path.join(__dirname, "data");
-const PUBLIC_DIR = path.join(__dirname, "public");
+const PUBLIC_DIR = fs.existsSync(path.join(__dirname, "public")) ? path.join(__dirname, "public") : __dirname;
 const TYPES      = ["participants", "benevoles", "soutiens", "prieres"];
 
 // ── Initialisation dossiers ─────────────────────────────────────────
